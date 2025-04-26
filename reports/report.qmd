@@ -605,16 +605,15 @@ order by
 
 1. Reflect on the SQL skills you used throughout these exercises. Which skills do you feel most confident in, and which do you think need more practice? How has this assignment helped you build or reinforce specific SQL competencies?
 
-( response goes here)
+I feel most confident in using select and group by statements. I feel I need more practice with case statements.I also found the update statement to be tricky. This assignment has helped me build confidence in querying and manipulating data.
 
 2. Problem-Solving Approach: Describe your approach to tackling the more complex tasks (like Tasks 18, 23, and 24). How did you break down these problems, and what steps did you take when you encountered challenges? How would you approach a similar problem differently in the future?
 
-( response goes here)
-
+When I ran into more complex tasks, I broke them down into smaller steps, starting with simple queries to get a better feel for the data. If I got stuck, I used trial and error to tweak and improve my queries, and I also checked the documentation whenever I needed to clear up any syntax issues. Next time, I’d spend a little more time planning out my query logic beforehand to avoid so much back-and-forth.
 
 3. Learning Takeaways: Consider the overall learning experience from this assignment. What were the biggest takeaways about working with SQL for data analysis and transformation? How do you think these skills will apply in real-world scenarios or future coursework?
 
-( response goes here)
+My biggest takeaway was realizing how important it is to really understand the dataset and use SQL’s flexibility to pull out meaningful insights. These skills are super useful in the real world, whether it’s building reports, spotting trends, or shaping data to help make better business or research decisions.
 
 
 # README
