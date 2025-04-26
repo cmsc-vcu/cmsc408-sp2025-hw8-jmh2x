@@ -92,7 +92,7 @@ List all non-countries.
 
 run_sql_and_return_html(cnx,"""
 select 
-  `Long Name`, Region
+  `Long Name`
 from
   world_bank_data.wdi_country
 where
@@ -228,7 +228,7 @@ where
 ## (skills: select, where)
 
 run_sql_and_return_html(cnx,"""
-select Region
+select `Short Name`,`Long Name`, Region
 from wdi_country
 where `Short Name` = 'Qatar'
 """)
@@ -361,8 +361,7 @@ select
   sum(case when `Income Group` = 'Upper middle income' then 1 else 0 end) as `Upper middle income`,
   sum(case when `Income Group` = 'Lower middle income' then 1 else 0 end) as `Lower middle income`,
   sum(case when `Income Group` = 'Low income' then 1 else 0 end) as `Low income`,
-  sum(case when `Income Group` is NULL then 1 else 0 end) as `No Income Group`,
-  cast(count(*) as decimal(10,1)) as `Row Total`
+  cast(sum(case when `Income Group` is not NULL then 1 else 0 end) as decimal(10,1)) as `Row Total`
 from 
   wdi_country
 group by 
@@ -370,7 +369,6 @@ group by
 order by 
   Region;
 """)
-
 ```
 
 ## Task 16
@@ -452,7 +450,7 @@ order by
 ## in Task 14.  (FYI - I get 6 rows in my final table.)
 ## (skills: select, where, subqueries, joins)
 
-run_sql_and_return_df(cnx,"""
+run_sql_and_return_html(cnx,"""
 with all_combinations as (
   select 
     r.Region, 
