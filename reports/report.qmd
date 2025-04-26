@@ -228,7 +228,7 @@ where
 ## (skills: select, where)
 
 run_sql_and_return_html(cnx,"""
-select `Long Name`, Region
+select Region
 from wdi_country
 where `Short Name` = 'Qatar'
 """)
@@ -307,7 +307,7 @@ where `Short Name` = 'Venezuela';
 ## Now, display the country again to verify the change stuck!
 
 run_sql_and_return_html(cnx,"""
-select `Short Name`, `Income Group`
+select `Short Name`, Region, `Income Group`
 from wdi_country
 where `Short Name` = 'Venezuela';
 """)
@@ -329,6 +329,8 @@ select
   count(*) as `no.of.countries`
 from 
   wdi_country
+where 
+  `Income Group` is not NULL
 group by 
   Region, `Income Group`
 order by 
@@ -360,7 +362,7 @@ select
   sum(case when `Income Group` = 'Lower middle income' then 1 else 0 end) as `Lower middle income`,
   sum(case when `Income Group` = 'Low income' then 1 else 0 end) as `Low income`,
   sum(case when `Income Group` is NULL then 1 else 0 end) as `No Income Group`,
-  count(*) as `Row Total`
+  cast(count(*) as decimal(10,1)) as `Row Total`
 from 
   wdi_country
 group by 
@@ -450,7 +452,7 @@ order by
 ## in Task 14.  (FYI - I get 6 rows in my final table.)
 ## (skills: select, where, subqueries, joins)
 
-run_sql_and_return_html(cnx,"""
+run_sql_and_return_df(cnx,"""
 with all_combinations as (
   select 
     r.Region, 
